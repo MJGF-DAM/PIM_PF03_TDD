@@ -87,9 +87,13 @@ public class MyDate {
 
     // SETTERS
     public void setDay(int day) {
-
+        int maxDays = getDaysInMonth(this.month, this.year);
+        if (day < 1 || day > maxDays) {
+            throw new IllegalArgumentException(ERR_INVALID_DAY);
+        }
         this.day = day;
     }
+    
     public void setMonth(Months month) {
         // Si el mes es nulo, lanzamos ERR_INVALID_MONTH
         if (month == null) {
