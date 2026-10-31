@@ -18,10 +18,55 @@ public class MyDate {
 
     // Constructor con parámetros para los test que utilizan new MyDate(day, month, year);
     public MyDate(int day, Months month, int year){
+
+        // Comprobamos la validación de la fecha introducida
+        validateDate(day, month, year);
+
         this.day = day;
         this.month = month;
         this.year = year;
     }
+
+    // Método auxiliar para obtener el número total de días de un mes y un año determinados
+    public static int getDaysInMonth(Months month, int year) {
+        if (month == null) {
+            return 0;
+        }
+        switch (month) {
+            case FEBRUARY:
+                return isLeapYear(year) ? 29 : 28;
+            case APRIL:
+            case JUNE:
+            case SEPTEMBER:
+            case NOVEMBER:
+                return 30;
+            default:
+                return 31;
+        }
+    }
+
+    // Lógica de validación
+    private void validateDate(int day, Months month, int year) {
+
+        if (month == null) {
+            throw new IllegalArgumentException(ERR_INVALID_MONTH);
+        }
+        int maxDays = getDaysInMonth(month, year);
+        if (day < 1 || day > maxDays) {
+            throw new IllegalArgumentException(ERR_INVALID_DAY);
+        }
+    }
+
+    // Método auxiliar para comprobar años bisiestos (aceptamos años negativos según lógica de los test)
+    public static boolean isLeapYear(int year) {
+        if (year == 0) {
+            return false;
+        }
+
+        int absYear = Math.abs(year);
+        return (absYear % 4 == 0 && absYear % 100 != 0) || (absYear % 400 == 0);
+    }
+
 
     // GETTERS
     public int getDay() {
@@ -36,12 +81,15 @@ public class MyDate {
 
     // SETTERS
     public void setDay(int day) {
+
         this.day = day;
     }
     public void setMonth(Months month) {
+
         this.month = month;
     }
     public void setYear(int year) {
+
         this.year = year;
     }
 
