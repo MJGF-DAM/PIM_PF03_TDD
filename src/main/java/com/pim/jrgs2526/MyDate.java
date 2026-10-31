@@ -13,7 +13,11 @@ public class MyDate {
     private int year;
 
     // Constructor vacio necesario para los test que utilizan new MyDate();
+    // Creamos una fecha valida para poder pasar el segundo test
     public MyDate(){
+        this.day = 16;
+        this.month = Months.MARCH;
+        this.year = 1987;
     }
 
     // Constructor con parámetros para los test que utilizan new MyDate(day, month, year);
