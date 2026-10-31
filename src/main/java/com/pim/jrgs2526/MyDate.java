@@ -93,7 +93,7 @@ public class MyDate {
         }
         this.day = day;
     }
-    
+
     public void setMonth(Months month) {
         // Si el mes es nulo, lanzamos ERR_INVALID_MONTH
         if (month == null) {
@@ -110,6 +110,12 @@ public class MyDate {
         this.month = month;
     }
     public void setYear(int year) {
+
+        int maxDays = getDaysInMonth(this.month, year);
+
+        if (this.day > maxDays) {
+            throw new IllegalArgumentException(ERR_INVALID_YEAR);
+        }
 
         this.year = year;
     }
