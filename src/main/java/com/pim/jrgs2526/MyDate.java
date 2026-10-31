@@ -57,7 +57,7 @@ public class MyDate {
         }
         int maxDays = getDaysInMonth(month, year);
         if (day < 1 || day > maxDays) {
-            throw new IllegalArgumentException(ERR_INVALID_DAY);
+            throw new IllegalArgumentException(ERR_INVALID_DATE);
         }
     }
 
