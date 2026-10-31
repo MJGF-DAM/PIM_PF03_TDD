@@ -91,6 +91,17 @@ public class MyDate {
         this.day = day;
     }
     public void setMonth(Months month) {
+        // Si el mes es nulo, lanzamos ERR_INVALID_MONTH
+        if (month == null) {
+            throw new IllegalArgumentException(ERR_INVALID_MONTH);
+        }
+        // Calculamos los días máximos del mes en el año actual del objeto
+        int maxDays = getDaysInMonth(month, this.year);
+
+        // Si el día actual de la instancia supera el máximo mes, se lanza ERR_INVALID_MONTH
+        if (this.day > maxDays) {
+            throw new IllegalArgumentException(ERR_INVALID_MONTH);
+        }
 
         this.month = month;
     }
