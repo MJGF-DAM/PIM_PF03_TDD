@@ -63,9 +63,11 @@ public class MyDate {
 
     // Método auxiliar para comprobar años bisiestos (aceptamos años negativos según lógica de los test)
     public static boolean isLeapYear(int year) {
-        if (year == 0) {
+        /*if (year == 0) {
             return false;
         }
+
+         */
 
         int absYear = Math.abs(year);
         return (absYear % 4 == 0 && absYear % 100 != 0) || (absYear % 400 == 0);
